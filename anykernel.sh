@@ -42,7 +42,6 @@ check_android_version() { return 0; }
 
 ui_print "Kernel with KernelSU compiled by qimgss"
 
-# boot install
 split_boot
 if [ -f "split_img/ramdisk.cpio" ]; then
     unpack_ramdisk
@@ -50,7 +49,6 @@ if [ -f "split_img/ramdisk.cpio" ]; then
 else
     flash_boot
 fi
-## end boot install
 
 ## install kernelsu manager
 if command -v pm &>/dev/null; then
@@ -59,3 +57,5 @@ if command -v pm &>/dev/null; then
         pm iinstall -r "KernelSU.apk"
     fi
 fi
+
+ui_print "Kernel installation process completed"
