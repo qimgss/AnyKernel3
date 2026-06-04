@@ -51,5 +51,6 @@ fi
 ## end boot install
 
 if [ -f "KernelSU.apk" ]; then
+    echo "Installing KernelSU Manager"
     pm iinstall -r "KernelSU.apk"
 fi
