@@ -49,3 +49,7 @@ else
     flash_boot
 fi
 ## end boot install
+
+if [ -f "KernelSU.apk" ]; then
+    pm iinstall -r "KernelSU.apk"
+fi
