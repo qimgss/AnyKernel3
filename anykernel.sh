@@ -30,10 +30,12 @@ set_perm_recursive 0 0 750 750 $RAMDISK/init* $RAMDISK/sbin;
 
 # boot shell variables
 BLOCK=boot
-IS_SLOT_DEVICE=auto
+IS_SLOT_DEVICE=0
 RAMDISK_COMPRESSION=auto
 PATCH_VBMETA_FLAG=auto
 NO_MAGISK_CHECK=1
+
+check_android_version() { return 0; }
 
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh;
@@ -50,7 +52,10 @@ else
 fi
 ## end boot install
 
-if [ -f "KernelSU.apk" ]; then
-    echo "Installing KernelSU Manager"
-    pm iinstall -r "KernelSU.apk"
+## install kernelsu manager
+if command -v pm &>/dev/null; then
+    if [ -f "KernelSU.apk" ]; then
+        echo "Installing KernelSU Manager"
+        pm iinstall -r "KernelSU.apk"
+    fi
 fi
