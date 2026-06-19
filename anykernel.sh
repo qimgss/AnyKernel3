@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=Kernel with KernelSU by qimgss
+kernel.string=OnePlus Kernel by Numbersf
 do.devicecheck=0
 do.modules=0
 do.systemless=0
@@ -20,6 +20,14 @@ supported.patchlevels=
 supported.vendorpatchlevels=
 '; } # end properties
 
+### AnyKernel install
+## boot shell variables
+block=boot
+is_slot_device=auto
+ramdisk_compression=auto
+patch_vbmeta_flag=auto
+no_magisk_check=1
+
 
 ### AnyKernel install
 ## boot files attributes
@@ -27,13 +35,6 @@ boot_attributes() {
 set_perm_recursive 0 0 755 644 $RAMDISK/*;
 set_perm_recursive 0 0 750 750 $RAMDISK/init* $RAMDISK/sbin;
 } # end attributes
-
-# boot shell variables
-BLOCK=boot
-IS_SLOT_DEVICE=0
-RAMDISK_COMPRESSION=auto
-PATCH_VBMETA_FLAG=auto
-NO_MAGISK_CHECK=1
 
 check_android_version() { return 0; }
 
